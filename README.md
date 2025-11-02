@@ -1,66 +1,122 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+#
+# VENTY - SOCIALS
+#
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+---
 
-## About Laravel
+## 1. PROJECT OVERVIEW
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Venty** is a full-stack social media web application built with Laravel as part of my independent development projects.  
+It demonstrates the creation of a modern, scalable platform where users can connect, share posts, interact through comments and likes, and maintain personal profiles.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+The project focuses on **clean architecture**, **database design**, and **real-world social features**, showcasing my understanding of full-stack Laravel development.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 2. CORE FEATURES
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* User authentication and profile management  
+* Create, edit, and delete posts  
+* Commenting and liking system  
+* User-to-user relationships (follow / unfollow)  
+* Category-based post grouping  
+* Real-time UI updates with AJAX and Laravel Mix  
+* Responsive and accessible design (Bootstrap 5)  
+* Admin-level moderation tools  
+* Data persistence using Eloquent ORM  
+* Database migrations and seeding for setup  
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 3. PROJECT STRUCTURE
 
-## Laravel Sponsors
+```
+app/Models/          → Contains all Eloquent models (User, Post, Comment, Like, Profile, Category)
+database/migrations/ → All migration files for tables and relationships
+resources/views/     → Blade templates for all pages and layouts
+routes/web.php       → Application routes for web interfaces
+public/              → Public assets (CSS, JS, Images)
+config/              → Configuration files (database, app, mail, etc.)
+tests/               → Unit and feature tests
+composer.json        → PHP dependencies
+artisan              → Laravel CLI tool
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+---
 
-### Premium Partners
+## 4. SETUP & INSTALLATION
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Aliy7/laravel-cs368.git
+   cd venty-socials
+   ```
 
-## Contributing
+2. **Install dependencies:**
+   ```bash
+   composer install
+   npm install && npm run dev
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. **Configure the environment:**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+   Update `.env` with your MySQL credentials.
 
-## Code of Conduct
+4. **Run migrations and seeders:**
+   ```bash
+   php artisan migrate --seed
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+5. **Start the development server:**
+   ```bash
+   php artisan serve
+   ```
 
-## Security Vulnerabilities
+   Access the app via [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## 5. DATABASE DESIGN
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Entities include:**  
+* `users` – Stores user profiles and credentials  
+* `posts` – Stores text and image posts  
+* `comments` – User comments on posts  
+* `likes` – Likes associated with posts  
+* `profiles` – One-to-one relationship with users  
+* `categories` – Organizes posts by type  
+
+Relationships follow Laravel conventions using **Eloquent ORM**.
+
+---
+
+## 6. PROJECT PURPOSE
+
+Venty was created to demonstrate the **core functionality of a modern social platform**, focusing on Laravel’s strength in:  
+* MVC structure  
+* Database relationships  
+* Blade templating and component reuse  
+* Validation, middleware, and routing control  
+
+It served as both a **learning milestone** and a **portfolio project**, highlighting backend logic, UI design, and full CRUD integration.
+
+---
+
+## 7. FUTURE IMPROVEMENTS
+
+* Implement messaging and notifications system  
+* Add real-time post updates with Laravel Echo  
+* Integrate profile picture uploads via Cloudinary  
+* Create API endpoints for mobile integration  
+
+---
+
+## 8. CONCLUSION
+
+**Venty** represents a complete social media system prototype built with Laravel, emphasizing scalability, maintainability, and clean coding practices.  
+It demonstrates my understanding of **Laravel frameworks**, **database modeling**, and **end-to-end application development** suitable for real-world environments.
+
+**----End----**
